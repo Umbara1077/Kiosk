@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Gelato Items</title>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
+    <!-- Firebase Config -->
+    <script src="public/firebaseConfig.js"></script>
+
+    <script>
+
+        async function setAllGelatoItemsOffMenu() {
+            try {
+                const querySnapshot = await db.collection('gelatoItems').get();
+                const batch = db.batch();
+
+                querySnapshot.forEach((doc) => {
+                    const docRef = db.collection('gelatoItems').doc(doc.id);
+                    batch.update(docRef, { onMenu: false });
+                });
+
+                await batch.commit();
+                alert("All gelato items have been set to off menu (onMenu: false).");
+            } catch (error) {
+                console.error("Error updating gelato items: ", error);
+                alert("Error occurred while updating gelato items.");
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', setAllGelatoItemsOffMenu);
+    </script>
+</head>
+<body>
+    <h1>Setting All Gelato Items Off Menu...</h1>
+</body>
+</html>

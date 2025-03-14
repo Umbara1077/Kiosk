@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credits</title>
+    <link rel="stylesheet" href="order.css">
+
+    <script>
+        let inactivityTime = function() {
+            let time;
+    
+            // Reset the timer when there is user activity
+            window.onload = resetTimer;
+            window.onmousemove = resetTimer;
+            window.onmousedown = resetTimer; // Catches touchscreen presses as well
+            window.ontouchstart = resetTimer;
+            window.ontouchmove = resetTimer;
+            window.onclick = resetTimer;     // Catches touchpad clicks as well
+            window.onkeypress = resetTimer;
+    
+            function logout() {
+                window.location.href = "index.html";
+            }
+    
+            function resetTimer() {
+                clearTimeout(time);
+                time = setTimeout(logout, 30000);  
+            }
+        };
+    
+        inactivityTime();
+    </script>
+    
+</head>
+<body>
+    <div class="container">
+        <img src="images/pixel-logo.jpg" alt="Precision Pixel Innovations" class="logo">
+        <div class="horizontal-section">
+            <div class="left-content">
+                <h1>Credits</h1>
+                <a href="index.html" class="button">Back to Menu</a>
+                <br><br>
+                <p>This kiosk system was designed and developed by Precision Pixel Innovations.</p>
+                <p>For more information, visit precisionpixelinnovations.dev</p>
+                <div class="footer">Thank you for choosing Dolce Vita Gelateria!</div>
+            </div>
+            <img src="images/pixel-qr-code.png" alt="QR Code" class="qr-code">
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketplace Items</title>
+    <link rel="stylesheet" href="gelatoStyle.css">
+
+    <script>
+        
+        let inactivityTime = function() {
+            let time;
+    
+            // Reset the timer when there is user activity
+            window.onload = resetTimer;
+            window.onmousemove = resetTimer;
+            window.onmousedown = resetTimer; // Catches touchscreen presses as well
+            window.ontouchstart = resetTimer;
+            window.ontouchmove = resetTimer;
+            window.onclick = resetTimer;     // Catches touchpad clicks as well
+            window.onkeypress = resetTimer;
+    
+            function logout() {
+                window.location.href = "index.html";
+            }
+    
+            function resetTimer() {
+                clearTimeout(time);
+                time = setTimeout(logout, 30000);  
+            }
+        };
+    
+        inactivityTime();
+    </script>
+    
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="Dolce Vita Gelateria">
+        </div>
+    </header>
+    <div class="center-container">
+        <a href="order.html" class="big-green-button">Checkout</a>
+        <a href="index.html" class="big-red-button">Menu</a>
+    </div>
+    <main>
+        <div class="gelato-grid">
+            <!-- Gelato flavors -->
+            <div class="gelato-card" onclick="openModal('Baiocchi')">
+                <img src="images/baiocchi.jpg" alt="Baiocchi">
+                <h3>Baiocchi</h3>
+            </div>
+            <div class="gelato-card" onclick="openModal('Chicche')">
+                <img src="images/chicche.jpg" alt="Chicche">
+                <h3>Chicche</h3>
+            </div>
+            <div class="gelato-card" onclick="openModal('Abbracci')">
+                <img src="images/abbracci.jpg" alt="Abbracci">
+                <h3>Abbracci</h3>
+            </div>
+            <div class="gelato-card" onclick="openModal('Galletti')">
+                <img src="images/galletti.jpg" alt="Galletti">
+                <h3>Galletti</h3>
+            </div>
+            <div class="gelato-card" onclick="openModal('Coffee Beans')">
+                <img src="images/coffee-beans.jpg" alt="Coffee Beans">
+                <h3>Coffee Beans</h3>
+            </div>
+
+        <!-- Modal container -->
+        <div id="modalContainer" class="modal-container" style="display: none;">
+            <div class="modal-content">
+                <header>
+                    <button id="closeModalButton" class="close-button">Close</button>
+                </header>
+                <main>
+                    <h2 id="modalTitle"></h2>
+                    <p id="modalDescription"></p>
+                    
+                    <div id="stepsContainer"></div>
+                </main>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2024 Dolce Vita Gelateria
+    </footer>
+    <script src="marketScripts.js"></script>
+</body>
+</html>

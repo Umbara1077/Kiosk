@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Menu</title>
+    <link rel="stylesheet" href="coffeeStyle.css">
+    <link rel="icon" href="dolce-logo.png" type="image/x-icon">
+
+    <script>
+        let inactivityTime = function() {
+            let time;
+    
+            // Reset the timer when there is user activity
+            window.onload = resetTimer;
+            window.onmousemove = resetTimer;
+            window.onmousedown = resetTimer; // Catches touchscreen presses as well
+            window.ontouchstart = resetTimer;
+            window.ontouchmove = resetTimer;
+            window.onclick = resetTimer;     // Catches touchpad clicks as well
+            window.onkeypress = resetTimer;
+    
+            function logout() {
+                window.location.href = "index.html";
+            }
+    
+            function resetTimer() {
+                clearTimeout(time);
+                time = setTimeout(logout, 30000);  
+            }
+        };
+    
+        inactivityTime();
+    </script>
+    
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="Dolce Vita Coffees">
+        </div>
+    </header>
+    <div class="center-container">
+        <a href="order.html" class="big-green-button">Checkout</a>
+        <a href="index.html" class="big-red-button">Menu</a>
+    </div>
+    <main>
+        <div class="coffee-grid">
+            <div class="coffee-card" onclick="openModal('Espresso')">
+                <img src="images/espresso.jpg" alt="Espresso">
+                <h3>Espresso</h3>
+            </div>
+            <div class="coffee-card" onclick="openModal('Cappuccino')">
+                <img src="images/cappuccino.jpg" alt="Cappuccino">
+                <h3>Cappuccino</h3>
+            </div>
+            <div class="coffee-card" onclick="openModal('Latte')">
+                <img src="images/latte.jpg" alt="Latte">
+                <h3>Latte</h3>
+            </div>
+            <div class="coffee-card" onclick="openModal('Americano')">
+                <img src="images/americano.jpg" alt="Americano">
+                <h3>Americano</h3>
+            </div>
+            <div class="coffee-card" onclick="openModal('Macchiato')">
+                <img src="images/macchiato.jpg" alt="Macchiato">
+                <h3>Macchiato</h3>
+            </div>
+            <div class="coffee-card" onclick="openModal('Portofino')">
+                <img src="images/portofino.jpg" alt="Portofino">
+                <h3>Portofino</h3>
+            </div>
+            <div class="coffee-card" onclick="openModal('Sorrento')">
+                <img src="images/sorrento.jpg" alt="Sorrento">
+                <h3>Sorrento</h3>
+            </div>
+            <div class="coffee-card" onclick="openModal('Venezia')">
+                <img src="images/venezia.jpg" alt="Venezia">
+                <h3>Venezia</h3>
+            </div>
+            <div class="coffee-card" onclick="openModal('Hot Tea')">
+                <img src="images/hot_tea.jpg" alt="Hot Tea">
+                <h3>Hot Tea</h3>
+            </div>
+            <div class="coffee-card" onclick="openModal('Affogato')">
+                <img src="images/affogato.jpg" alt="Affogato">
+                <h3>Affogato</h3>
+            </div>
+            <div class="coffee-card" onclick="openModal('Gelato Latte')">
+                <img src="images/gelato_latte.jpg" alt="Gelato Latte">
+                <h3>Gelato Latte</h3>
+            </div>
+            <div class="coffee-card" onclick="openModal('Iced Coffee')">
+                <img src="images/iced_coffee.jpg" alt="Iced Coffee">
+                <h3>Iced Coffee</h3>
+            </div>
+            <div class="coffee-card" onclick="openModal('Iced Portofino')">
+                <img src="images/iced_portofino.jpg" alt="Iced Portofino">
+                <h3>Iced Portofino</h3>
+            </div>
+            <div class="coffee-card" onclick="openModal('Iced Sorrento')">
+                <img src="images/iced_sorrento.jpg" alt="Iced Sorrento">
+                <h3>Iced Sorrento</h3>
+            </div>
+            <div class="coffee-card" onclick="openModal('Iced Venezia')">
+                <img src="images/iced_venezia.jpg" alt="Iced Venezia">
+                <h3>Iced Venezia</h3>
+            </div>
+            <div class="coffee-card" onclick="openModal('Doppio')">
+                <img src="images/doppio.jpg" alt="Doppio">
+                <h3>Doppio</h3>
+            </div>            
+
+        </div>
+
+        <!-- Modal container -->
+        <div id="modalContainer" class="modal-container" style="display: none;">
+            <div class="modal-content">
+                <header>
+                    <button id="closeModalButton" class="close-button">Close</button>
+                </header>
+                <main>
+                    <h2 id="modalTitle"></h2>
+                    <p id="modalDescription"></p>
+                    <div id="stepsContainer"></div>
+                </main>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2024 Dolce Vita Gelateria
+    </footer>
+    <script src="coffeeScript.js"></script>
+</body>
+</html>
+

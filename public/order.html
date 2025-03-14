@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Ordering</title>
+    <link rel="stylesheet" href="order.css">
+
+    <script>
+        let inactivityTime = function() {
+            let time;
+    
+            // Reset the timer when there is user activity
+            window.onload = resetTimer;
+            window.onmousemove = resetTimer;
+            window.onmousedown = resetTimer; // Catches touchscreen presses as well
+            window.ontouchstart = resetTimer;
+            window.ontouchmove = resetTimer;
+            window.onclick = resetTimer;     // Catches touchpad clicks as well
+            window.onkeypress = resetTimer;
+    
+            function logout() {
+                window.location.href = "index.html";
+            }
+    
+            function resetTimer() {
+                clearTimeout(time);
+                time = setTimeout(logout, 30000);  
+            }
+        };
+    
+        inactivityTime();
+    </script>
+    
+</head>
+<body>
+    <div class="container">
+        <img src="images/logo.png" alt="Dolce Vita Gelateria Logo" class="logo">
+        <div class="horizontal-section">
+            <div class="left-content">
+                <h1>Order Here</h1>
+                <a href="index.html" class="button">Back to Menu</a>
+                <br><br>
+                <a href="credits.html" class="button">Credits</a>
+                <br><br>
+                <p>Order your favorite gelato flavors and coffee drinks from your mobile device.</p>
+                <p>Scan the QR code to place your order from your mobile device.</p>
+                <div class="footer">Thank you for choosing Dolce Vita Gelato!</div>
+            </div>
+            <img src="images/qr-code.png" alt="QR Code" class="qr-code">
+        </div>
+    </div>
+</body>
+</html>

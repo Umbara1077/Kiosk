@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menu</title>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="firebaseConfig.js"></script>
+    <link rel="icon" href="dolce-logo.png" type="image/x-icon">
+    <script>
+        let inactivityTime = function() {
+            let time;
+            let videoVisible = true;
+
+            // Helper function to check if video is playing
+            function isVideoPlaying(video) {
+                return video && !video.paused && !video.ended && video.readyState > 2;
+            }
+
+            // Reset the timer when there is user activity
+            function resetTimer() {
+                clearTimeout(time);
+                time = setTimeout(logout, 30000);  // Timer set to 30 seconds
+            }
+
+            function logout() {
+                let video = document.getElementById("intro-video");
+                if (!isVideoPlaying(video) || !videoVisible) {
+                    console.log("No video playing or video is paused or not visible. Reloading page.");
+                    window.location.href = "index.html";
+                } else {
+                    console.log("Video is playing. Page will not reload.");
+                }
+            }
+
+            function handleVisibilityChange() {
+                if (document.visibilityState === 'visible') {
+                    resetTimer();
+                }
+            }
+
+            // Intersection Observer to check if the video is visible
+            let observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    videoVisible = entry.isIntersecting;
+                });
+            }, { threshold: 0.5 }); // Adjust the threshold as needed
+
+            window.onload = function() {
+                let videoElement = document.getElementById('intro-video');
+                if (videoElement) {
+                    observer.observe(videoElement);
+                }
+                resetTimer();
+            };
+            
+            window.onmousemove = resetTimer;
+            window.onmousedown = resetTimer; // Catches touchscreen presses as well
+            window.ontouchstart = resetTimer;
+            window.ontouchmove = resetTimer;
+            window.onclick = resetTimer;     // Catches touchpad clicks as well
+            window.onkeypress = resetTimer;
+            document.onvisibilitychange = handleVisibilityChange;
+        };
+
+        inactivityTime();
+    </script>
+</head>
+<body>
+    <div id="video-container">
+        <div id="overlay"></div>
+        <video id="intro-video" autoplay muted>
+            <source src="videos/video1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    
+    <div id="home-page" class="hidden">
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="Dolce Vita Gelateria">
+        </div>
+    </header>
+    
+    <main>
+        <div class="center-container">
+            <a href="order.html" class="big-green-button">Checkout</a>
+        </div>
+        
+        <div class="center-container">
+            <div class="gelato-grid">
+                <!-- Gelato flavors -->
+                <a href="coffee.html" class="gelato-card">
+                    <img src="images/espresso.jpg" alt="Coffee Menu">
+                    <h3>Coffee Menu</h3>
+                </a>
+                <a href="gelato.html" class="gelato-card">
+                    <img src="images/ferrero_rocher.jpg" alt="Gelato Menu">
+                    <h3>Gelato Menu</h3>
+                </a>
+                <a href="popsicle.html" class="gelato-card">
+                    <img src="images/popsicle2.jpg" alt="Popsicle Menu">
+                    <h3>Popsicle Menu</h3>
+                </a>
+                <a href="Drinks.html" class="gelato-card">
+                    <img src="images/blood_orange_soda_v3.jpg" alt="Drinks Menu">
+                    <h3>Drinks Menu</h3>
+                </a>
+                <a href="pastries.html" class="gelato-card">
+                    <img src="images/cremebru.png" alt="Pastries Menu">
+                    <h3>Pastries Menu</h3>
+                </a>
+                <a href="Market.html" class="gelato-card">
+                    <img src="images/baiocchi.jpg" alt="Marketplace Menu">
+                    <h3>Marketplace Menu</h3>
+                </a>
+                <a href="order.html" class="gelato-card">
+                    <img src="images/order.jpg" alt="Order">
+                    <h3>Order Now</h3>
+                </a>
+            </div>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

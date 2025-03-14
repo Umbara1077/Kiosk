@@ -1,0 +1,259 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background: linear-gradient(to bottom, #ff0000, #ffffff, #008000); 
+}
+
+header, footer {
+    text-align: center;
+    padding: 5px;
+    background: linear-gradient(90deg, green 33.33%, white 33.33%, white 66.66%, red 66.66%);
+    color: white;
+}
+
+.logo img {
+    max-width: 250px;
+    height: auto;
+}
+
+.modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    width: auto;
+    max-width: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.close-button {
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    background: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 16px;
+}
+
+.coffee-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.coffee-card {
+    border: 1px solid #ccc;
+    text-align: center;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    background: white; 
+    cursor: pointer; 
+    transition: transform 0.3s ease; 
+}
+
+.coffee-card:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); 
+}
+
+.coffee-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0; 
+}
+
+.coffee-card h3 {
+    color: #38220f; 
+}
+
+.steps-container {
+    background-color: #f8f5f0; 
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.step {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd; 
+    padding-bottom: 10px;
+}
+
+.step-number {
+    background-color: #38220f;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 50%;
+    font-weight: bold;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.step-description {
+    font-style: italic;
+    line-height: 1.7;
+}
+
+.coffee-link-button {
+    display: inline-block;
+    background-color: #38220f;
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    cursor: pointer;
+  }
+  
+  .coffee-link-button:hover {
+    background-color: #543519;
+  }
+
+  .center-container {
+    display: flex;
+    justify-content: center; 
+    margin-top: 20px;
+}
+
+.big-green-button {
+    display: inline-block;
+    width: 200px;
+    padding: 20px; 
+    background-color: #4CAF50; 
+    color: white;
+    text-align: center;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px; 
+    font-weight: bold;
+    margin: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-decoration: none; /* Remove underline */
+}
+
+.big-green-button:hover {
+    background-color: #66BB6A;
+    transform: scale(1.05); 
+}
+
+.big-red-button {
+    display: inline-block;
+    width: 200px;
+    padding: 20px; 
+    background-color: #f44336; 
+    color: white;
+    text-align: center;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-decoration: none; /* Remove underline */
+}
+
+.big-red-button:hover {
+    background-color: #d32f2f; 
+    transform: scale(1.05); 
+}
+
+  /* Mobile devices (up to 600px) */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    h1, h2, h3 {
+        font-size: 1.5em; 
+    }
+
+    .coffee-grid {
+        display: grid;
+        grid-template-columns: 1fr; 
+        gap: 15px; 
+    }
+
+    .coffee-card {
+        padding: 10px;
+    }
+
+    input[type="text"] {
+        width: 100%; 
+    }
+
+    .modal-content {
+        width: 90%; 
+        padding: 10px;
+    }
+    
+    .coffee-link-button {
+        width: 100%; 
+        padding: 15px; 
+    }
+}
+
+/* Tablets (601px to 1024px) */
+@media (min-width: 601px) and (max-width: 1024px) {
+    body {
+        padding: 15px;
+    }
+
+    h1, h2, h3 {
+        font-size: 1.75em; 
+    }
+
+    .coffee-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px; 
+    }
+
+    .coffee-card {
+        padding: 15px;
+    }
+
+    input[type="text"] {
+        width: 100%;
+    }
+
+    .modal-content {
+        width: 80%; 
+        padding: 15px; 
+    }
+    
+    .coffee-link-button {
+        width: auto; 
+        padding: 10px 20px;
+    }
+}

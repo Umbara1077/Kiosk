@@ -1,0 +1,151 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f7f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+}
+
+/* Container for the QR code, instructions, and logo */
+.container {
+    background-color: #ffffff;
+    padding: 3em;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90%; /* Default to 90% width */
+    max-width: 1200px; /* Maximum width for larger screens */
+    transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container:hover {
+    transform: scale(1.05);
+}
+
+/* Logo */
+.logo {
+    width: 100%;
+    height: auto;
+    max-width: 200px; /* Max width for logo */
+    margin-bottom: 1.5em;
+}
+
+/* Horizontal content section */
+.horizontal-section {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* Left content */
+.left-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    max-width: 50%; /* Adjust width as necessary */
+}
+
+h1 {
+    font-size: 36px;
+    margin-bottom: 0.5em;
+}
+
+/* Instructions */
+p {
+    font-size: 20px;
+    margin-bottom: 2em;
+}
+
+/* QR code */
+.qr-code {
+    width: auto;
+    height: auto;
+    max-width: 300px; /* Adjust QR code size */
+    margin-left: 2em;
+    object-fit: contain; /* Maintain aspect ratio */
+}
+
+/* Button */
+.button {
+    display: inline-block;
+    padding: 1em 2em;
+    font-size: 18px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.footer {
+    font-size: 18px;
+    color: #777;
+    margin-top: 1.5em;
+}
+
+/* Adding a small animation to the container */
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.container {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Responsive layout for tablets in landscape mode */
+@media (min-width: 601px) and (max-width: 1024px) and (orientation: landscape) {
+    .container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .horizontal-section {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .logo, .qr-code, .footer {
+        margin: 0 1em;
+    }
+
+    h1, p, .button {
+        margin: 0 2em;
+    }
+}
+
+/* Responsive layout for larger screens */
+@media (min-width: 1025px) {
+    .container {
+        width: 60%; /* Decrease width for larger screens */
+    }
+}

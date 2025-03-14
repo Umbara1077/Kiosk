@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gelato Menu</title>
+    <link rel="stylesheet" href="gelatoStyle.css">
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
+    <script src="firebaseConfig.js"></script>
+    <link rel="icon" href="dolce-logo.png" type="image/x-icon">
+
+    <script>
+        let inactivityTime = function() {
+            let time;
+
+            function logout() {
+                window.location.href = "index.html";
+            }
+
+            function resetTimer() {
+                clearTimeout(time);
+                time = setTimeout(logout, 30000);  
+            }
+
+            window.onload = resetTimer;
+            window.onmousemove = resetTimer;
+            window.onmousedown = resetTimer;
+            window.ontouchstart = resetTimer;
+            window.ontouchmove = resetTimer;
+            window.onclick = resetTimer;
+            window.onkeypress = resetTimer;
+        };
+    
+        inactivityTime();
+    </script>
+    
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="images/logo.png" alt="Dolce Vita Gelateria">
+        </div>
+    </header>
+    
+    <div class="center-container">
+        <a href="order.html" class="big-green-button">Checkout</a>
+        <a href="index.html" class="big-red-button">Menu</a>
+    </div>
+
+    <!-- Gelato grid that will be populated by JavaScript -->
+    <div class="gelato-grid"></div>            
+
+    <!-- Modal container -->
+    <div id="modalContainer" class="modal-container" style="display: none;">
+        <div class="modal-content">
+            <header>
+                <button id="closeModalButton" class="close-button">Close</button>
+            </header>
+            <main>
+                <h2 id="modalTitle"></h2>
+                <p id="modalDescription"></p>
+                <div id="stepsContainer"></div>
+            </main>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 Dolce Vita Gelateria
+    </footer>
+    <script src="gelatoScript.js"></script>
+</body>
+</html>

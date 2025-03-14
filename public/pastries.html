@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pastries Menu</title>
+    <link rel="stylesheet" href="gelatoStyle.css">
+
+    <script>
+        
+        let inactivityTime = function() {
+            let time;
+    
+            // Reset the timer when there is user activity
+            window.onload = resetTimer;
+            window.onmousemove = resetTimer;
+            window.onmousedown = resetTimer; // Catches touchscreen presses as well
+            window.ontouchstart = resetTimer;
+            window.ontouchmove = resetTimer;
+            window.onclick = resetTimer;     // Catches touchpad clicks as well
+            window.onkeypress = resetTimer;
+    
+            function logout() {
+                window.location.href = "index.html";
+            }
+    
+            function resetTimer() {
+                clearTimeout(time);
+                time = setTimeout(logout, 30000); 
+            }
+        };
+    
+        inactivityTime();
+    </script>
+    
+</head>
+<body>
+    <header class="pastries-header">
+        <div class="logo-container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Dolce Vita Gelateria">
+            </div>
+        </div>
+    </header>    
+    <div class="center-container">
+        <a href="order.html" class="big-green-button">Checkout</a>
+        <a href="index.html" class="big-red-button">Menu</a>
+    </div>
+    <main>
+        <div class="gelato-grid">
+            <div class="gelato-card" onclick="openModal('Gelato Cakes')">
+                <img src="images/gelatocake.png" alt="Gelato Cakes">
+                <h3>Gelato Cakes</h3>
+            </div>
+            <div class="gelato-card" onclick="openModal('Panna Cotta')">
+                <img src="images/panna cotta.png" alt="Panna Cotta">
+                <h3>Panna Cotta</h3>
+            </div>
+            <div class="gelato-card" onclick="openModal('Creme Brulee')">
+                <img src="images/cremebru.png" alt="Creme Brulee">
+                <h3>Creme Brulee</h3>
+            </div>            
+        </div>
+
+        <!-- Modal container -->
+        <div id="modalContainer" class="modal-container" style="display: none;">
+            <div class="modal-content">
+                <header>
+                    <button id="closeModalButton" class="close-button">Close</button>
+                </header>
+                <main>
+                    <h2 id="modalTitle"></h2>
+                    <p id="modalDescription"></p>
+                    
+                    <div id="stepsContainer"></div>
+                </main>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2024 Dolce Vita Gelateria
+    </footer>
+   <script src="pastrieScript.js"></script>
+</body>
+</html>
