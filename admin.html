@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="stylesheet" href="adminStyle.css">
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.24.0/firebase-storage.js"></script>
+    <script src="firebaseConfig.js"></script>
+    <link rel="icon" href="dolce-logo.png" type="image/x-icon">
+</head>
+<body>
+    <div id="admin-container">
+        <h1>Kiosk Admin</h1>
+
+        <!-- Login Container -->
+        <div id="login-container">
+            <img src="images/logo.png" alt="Dolce Vita Gelateria Logo" class="logo-image">
+            <h2>Admin Login</h2>
+            <input type="email" id="email" placeholder="Email">
+            <input type="password" id="password" placeholder="Password">
+            <button id="login-button">Login</button>
+            <p id="login-error" class="error-message"></p>
+        </div>
+
+        <!-- Menu Management Container -->
+        <div id="menu-management-container" class="hidden">
+        <!--    <h2>Manage Gelato Menu</h2>
+            <div id="current-menu" class="grid-container"></div>
+
+            <div class="section-divider">Stock Management</div>
+            <label for="stock-status-dropdown">Select Item:</label>
+            <select id="stock-status-dropdown"></select>
+
+            <label>
+                <input type="checkbox" id="in-stock-checkbox"> In Stock
+            </label>
+            <label>
+                <input type="checkbox" id="out-of-stock-checkbox"> Out of Stock
+            </label>
+            <button id="update-stock-button">Update Stock Status</button>
+            
+            <div class="section-divider">Add New Item</div>
+            <input type="text" id="new-item-title" placeholder="New Item Title">
+            <input type="text" id="new-item-description" placeholder="New Item Description">
+            <label for="new-item-upload">Upload Image:</label>
+            <input type="file" id="new-item-upload" accept="image/*">
+            <label for="new-item-url">Or enter URL:</label>
+            <input type="url" id="new-item-url" placeholder="Image or Video URL">
+            <button id="add-new-item-button">Add Item</button>
+
+            <div class="section-divider">Replace Existing Item</div>
+            <label for="replace-item-dropdown">Select Existing Item:</label>
+            <select id="replace-item-dropdown"></select>
+            <label for="swap-item-dropdown">Select Swap Item:</label>
+            <select id="swap-item-dropdown"></select>
+            <button id="replace-item-button">Replace Selected Item</button>
+        </div> -->
+    
+
+        <!-- Video Management Container -->
+        <div id="video-management-container" class="hidden">
+            <h2>Manage Videos</h2>
+            <div id="current-videos" class="grid-container"></div>
+            <div class="section-divider">Add New Video</div>
+            <label for="new-video-upload">Upload Video:</label>
+            <input type="file" id="new-video-upload" accept="video/*">
+            <label for="new-video-url">Or enter URL:</label>
+            <input type="url" id="new-video-url" placeholder="Video URL">
+            <button id="add-new-video-button">Add Video</button>
+        </div>
+    </div>
+    <script src="adminScript.js"></script>
+</body>
+</html>
